@@ -1,0 +1,124 @@
+:root {
+    --blue: #7469b6;
+}
+
+.bg-dalwa {
+    background-color: var(--blue);
+}
+
+.bkg-red {
+    background-color: #dc3545;
+    width: 30px !important;
+    height: auto;
+    padding: 0.25rem;
+    border-radius: 25%;
+    color: #fff;
+}
+
+.bkg-blue {
+    background-color: #007bff;
+    width: 30px !important;
+    height: auto;
+    padding: 0.25rem;
+    border-radius: 25%;
+    color: #fff;
+}
+
+.bkg-dark {
+    background-color: #343a40;
+    width: 30px !important;
+    height: auto;
+    padding: 0.25rem;
+    border-radius: 25%;
+    color: #fff;
+}
+
+.bkg-blue-2 {
+    background-color: #17a2b8;
+    width: 30px !important;
+    height: auto;
+    padding: 0.25rem;
+    border-radius: 25%;
+    color: #fff;
+}
+
+.bkg-green {
+    background-color: #28a745;
+    width: 30px !important;
+    height: auto;
+    padding: 0.25rem;
+    border-radius: 25%;
+    color: #fff;
+}
+
+.bkg-purple {
+    background-color: #5856d6;
+    width: 30px !important;
+    height: auto;
+    padding: 0.25rem;
+    border-radius: 25%;
+    color: #fff;
+}
+
+.bkg-grey {
+    background-color: #6c757d;
+    width: 30px !important;
+    height: auto;
+    padding: 0.25rem;
+    border-radius: 25%;
+    color: #fff;
+}
+
+.bkg-yellow {
+    background-color: #ffc107;
+    width: 30px !important;
+    height: auto;
+    padding: 0.25rem;
+    border-radius: 25%;
+    color: #fff;
+}
+.bkg-orange {
+    background-color: #ff9c07;
+    width: 30px !important;
+    height: auto;
+    padding: 0.25rem;
+    border-radius: 25%;
+    color: #fff;
+}
+
+.bkg-white {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.select2 {
+    width: 100% !important;
+}
+
+.loading-modal {
+    z-index: 99;
+    background-color: rgb(255, 255, 255, 0.7);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+div .search-title .text-light {
+    color: var(--blue) !important;
+}
+
+li.nav-item a.nav-link.active {
+    background-color: var(--blue) !important;
+    color: #fff !important;
+}
+
+.navbar-custom {
+    background-color: var(--blue) !important;
+}
+
+.callout.callout-info {
+    border-left-color: var(--blue) !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

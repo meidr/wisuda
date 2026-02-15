@@ -1,0 +1,271 @@
+/* TABLE OF CONTENTS */
+/* ------------------
+1. General
+2. Navbar
+3. Banner
+4. Information
+5  Brosur
+6. Price
+7. Customer Service
+8. Prodi
+9. Faq
+10. Footer
+-------------------- */
+
+/* 1 General */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    /* Background Color */
+    --bg-black: #090b3c;
+    --bg-blue: #173462;
+    --bg-yellow: #f4af1b;
+    --bg-white: #fff;
+    --bg-light-white: #fcfcfc;
+    --bg-light-2: #f2f7fa;
+    --bg-dark-green: #0e9d80;
+    --bg-features-1: #fff6d6;
+    --bg-features-2: #ebdcf9;
+    --bg-features-3: #ddf5fc;
+    --bg-features-4: #dcf6e8;
+    --bg-features-5: #f8e4e1;
+    --bg-features-6: #fbffd4;
+
+    /* Text Color */
+    --text-black: #000;
+    --text-white: #fff;
+    --text-dark-gray: #4c535d;
+    --text-light-2: #798089;
+    --text-light-3: #5e5e72;
+    --text-light-4: #a0a0a0;
+    --text-dark-green: #12c4a0;
+    --text-orange: #ff5d2a;
+    --text-yellow: #f4af1b;
+    --text-blue: #173462;
+
+    /* Fonts */
+    --primary-font: Quicksand;
+    --secondary-font: "Poppins", sans-serif;
+    --normal-font-weight: 400;
+    --bold-font-weight: 700;
+}
+body {
+    font-family: var(--primary-font);
+    font-weight: var(--normal-font-weight);
+    background-color: var(--bg-white);
+}
+/* Custom CSS */
+.learn-more-btn {
+    background: linear-gradient(to right, #0f7404, #5cb917);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-white) !important;
+    padding: 10px 20px !important;
+    border-radius: 10px;
+    border: 2px solid var(--bg-light-2);
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.learn-more-btn:hover {
+    background: var(--bg-white);
+    font-size: 18px;
+    font-weight: 700;
+    color: #5cb917 !important;
+    padding: 10px 20px !important;
+    border-radius: 10px;
+    border: 2px solid #5cb917;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+/* 2 Navbar */
+
+.header_wrapper .navbar {
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background: url("../images/header-bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 2rem 5rem;
+    width: 90%;
+}
+.header_wrapper .navbar-brand img {
+    max-width: 210px;
+    height: auto;
+}
+.header_wrapper .menu-navbar-nav {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+.header_wrapper .nav-item {
+    margin: 0 5px;
+}
+.header_wrapper .nav-item .nav-link {
+    font-weight: var(--bold-font-weight);
+    font-size: 18px;
+    color: var(--text-white);
+    line-height: 1;
+}
+.header_wrapper .nav-item .nav-link.active {
+    color: var(--text-yellow);
+}
+.header-scrolled {
+    position: fixed;
+    margin-top: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: var(--bg-white);
+    -webkit-box-shadow: 0 4px 6px 0 rgba(12, 0, 46, 0.05);
+    box-shadow: 0 4px 6px 0 rgba(12, 0, 46, 0.05);
+}
+.header-scrolled .navbar-brand img {
+    width: 190px;
+    height: auto;
+    animation: animated 0.1s ease-in-out;
+}
+@keyframes animated {
+    0% {
+        width: 210px;
+    }
+    50% {
+        width: 200px;
+    }
+    100% {
+        width: 190px;
+    }
+}
+.header-scrolled .nav-item .nav-link {
+    font-size: 17px;
+}
+
+/* 3 Banner */
+.banner_wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    padding: 100px 0 125px;
+    background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.9),
+            rgba(0, 0, 0, 0.1)
+        ),
+        url("../images/mabna.jpg");
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+}
+.banner_wrapper .banner-subtitle {
+    margin-top: 5px;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: var(--text-light-3);
+}
+.banner_wrapper .banner-title {
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    font-size: 55px;
+    text-transform: capitalize;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--text-blue);
+}
+.banner_wrapper .banner-title-2 {
+    font-family: var(--secondary-font);
+    background-color: var(--text-blue);
+    font-weight: 700;
+    font-size: 30px;
+    text-transform: capitalize;
+    line-height: 1.15;
+    max-width: 700px;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: var(--text-white);
+}
+
+.banner_wrapper .banner-title-text {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    max-width: 700px;
+    color: var(--text-light-1);
+}
+.banner_wrapper .learn-more-btn-section {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 20px;
+}
+.banner_wrapper .header-img-section img {
+    margin-top: 5px;
+    width: 100%;
+}
+
+.login {
+    font-family: "Poppins", sans-serif;
+    background-image: url("../images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.register {
+    font-family: "Poppins", sans-serif;
+    background-image: url("../images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 50px 0 0;
+}
+
+.box-area {
+    width: 930px;
+    margin-top: 30px;
+}
+
+.box-area-register {
+    width: 100%;
+}
+
+.right-box {
+    padding: 40px 30px 40px 40px;
+    background-color: rgb(255, 255, 255, 0.8);
+}
+
+.right-box-register {
+    /* padding: 40px 30px 40px 40px; */
+    padding: 40px 0;
+    background-color: rgb(255, 255, 255, 0.8);
+}
+::placeholder {
+    font-size: 16px;
+}
+.rounded-4 {
+    border-radius: 20px;
+}
+.rounded-5 {
+    border-radius: 30px;
+}

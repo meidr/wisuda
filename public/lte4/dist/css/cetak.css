@@ -1,0 +1,68 @@
+/* @page { margin: 100px 25px; } */
+/* @page { margin: 30px 30px; } */
+footer {
+    font-size: 8px;
+    position: fixed;
+    bottom: -60px;
+    left: 0px;
+    right: 0px;
+    height: 50px;
+}
+/* p { page-break-after: always; }
+p:last-child { page-break-after: never; } */
+
+body {
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+}
+
+table {
+    font-size: 13px;
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    /* font:sans-serif; */
+    font-family: "Open Sans", sans-serif;
+}
+table td {
+    height: 10px;
+    padding: 2px;
+}
+.data {
+    width: 100%;
+    max-width: 100%;
+}
+.data th {
+    padding: 8px;
+    border: 0.5px solid black;
+    background-color: #f9fafc;
+}
+.data td {
+    border: 0.5px solid black;
+    padding: 4px;
+}
+tfoot {
+    background-color: #f9fafc;
+}
+.judul {
+    font-size: 12px;
+}
+.judul_besar {
+    font-size: 14px;
+}
+.alamat {
+    font-size: 8px;
+}
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+
+.kop-logo {
+    width: 50% !important;
+}

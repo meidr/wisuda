@@ -1,0 +1,110 @@
+@media (max-width: 1230px) {
+    /* 2 Navbar */
+    .header_wrapper .nav-item {
+        margin: 0 5px;
+    }
+    .header_wrapper .learn-more-btn {
+        padding: 12px 10px !important;
+    }
+
+    /* 3 Banner */
+    .banner_wrapper .banner-title {
+        font-size: 50px;
+    }
+    .tranding-slider-control {
+        display: none;
+    }
+}
+
+@media (max-width: 1070px) {
+    /* 2 Navbar */
+    .header_wrapper .nav-item .nav-link {
+        font-size: 16px;
+    }
+
+    /* 5 About */
+    .about_wrapper .about_title {
+        font-size: 30px;
+    }
+    .tranding-slider-control {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+    /* 2 Navbar */
+    .header_wrapper .navbar-brand img {
+        width: 180px;
+    }
+    .header_wrapper .navbar-toggler:focus {
+        box-shadow: none;
+    }
+    .header_wrapper .menu-navbar-nav {
+        text-align: center;
+    }
+    .header_wrapper .nav-item .nav-link {
+        margin-top: 15px;
+        font-size: 18px;
+    }
+    .header_wrapper .nav-item:last-child .nav-link {
+        margin-bottom: 20px;
+    }
+    .header_wrapper .learn-more-btn {
+        padding: 12px 29px !important;
+    }
+    .header_wrapper .navbar-collapse {
+        background: var(--bg-white);
+    }
+
+    /* 3 Banner */
+    .banner_wrapper .banner-title {
+        font-size: 36px;
+    }
+
+    /* 5 About */
+    .about_wrapper .about_number {
+        margin: 20px auto;
+    }
+    .about_wrapper .about_title {
+        font-size: 24px;
+    }
+    .tranding-slider-control {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    /* 3 Banner */
+    .banner_wrapper {
+        padding: 100px 0 100px;
+        background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.7),
+                rgba(255, 255, 255, 0.7)
+            ),
+            url("../images/mabna.jpg");
+        background-position: bottom;
+    }
+
+    .banner_wrapper .row {
+        flex-direction: column-reverse;
+    }
+    .banner_wrapper .learn-more-btn-section {
+        justify-content: center;
+    }
+
+    .banner_wrapper .banner-title-text{
+        color: #000;
+    }
+
+    .box-area {
+        margin: 0 10px;
+    }
+    .left-box {
+        height: 100px;
+        overflow: hidden;
+    }
+    .right-box {
+        padding: 20px;
+    }
+} */
