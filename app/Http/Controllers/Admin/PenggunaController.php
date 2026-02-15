@@ -37,6 +37,7 @@ class PenggunaController extends Controller
                     $query->orWhere('users.email', 'LIKE', "%$search%");
                     $query->orWhere('role.nama', 'LIKE', "%$search%");
                     $query->orWhere('users.jenis_kelamin', 'LIKE', "%$search%");
+                    $query->orWhere('users.hp', 'LIKE', "%$search%");
                 });
             })
             ->addColumn('action', function ($row) {
@@ -56,6 +57,7 @@ class PenggunaController extends Controller
                             data-email="' . $row->email . '"
                             data-role_id="' . $row->role_id . '"
                             data-jenis_kelamin="' . $row->jenis_kelamin . '"
+                            data-hp="' . $row->hp . '"
                         >Edit</button>
                         <form action="" onsubmit="deleteData(event)" method="POST">
                         ' . method_field('delete') . csrf_field() . '
@@ -83,6 +85,7 @@ class PenggunaController extends Controller
                 'email' => 'required',
                 'role_id' => 'required',
                 'jenis_kelamin' => 'required',
+                'hp' => 'nullable',
             ]);
 
             $user = User::where('username', $request->username)->first();
@@ -104,6 +107,7 @@ class PenggunaController extends Controller
             $new->role_id = $request->role_id;
             $new->jenis_kelamin = $request->jenis_kelamin;
             $new->no_unik = uniqid();
+            $new->hp = $request->hp;
             $new->save();
 
             $data = [
@@ -133,6 +137,7 @@ class PenggunaController extends Controller
                 'email' => 'required',
                 'role_id' => 'required',
                 'jenis_kelamin' => 'required',
+                'hp' => 'nullable',
             ]);
 
             $user = User::findOrFail($request->id);
@@ -155,6 +160,7 @@ class PenggunaController extends Controller
             $user->jenis_kelamin = $request->jenis_kelamin;
             $user->role_id = $request->role_id;
             $user->user_id = \Auth::user()->id;
+            $user->hp = $request->hp;
             $user->save();
 
             $data = [

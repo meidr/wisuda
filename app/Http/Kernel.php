@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'otp' => \App\Http\Middleware\Otp::class,
         'apiauth' => \App\Http\Middleware\ApiAuth::class,
         'jadwal' => \App\Http\Middleware\Jadwal::class,
+        'admin.otp' => \App\Http\Middleware\AdminOtp::class,
     ];
 }

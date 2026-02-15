@@ -55,6 +55,10 @@
                             <a class="nav-link" id="tabs-fonnte-tab" data-toggle="pill" href="#tabs-fonnte"
                                 role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Fonnte</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tabs-satuconnect-tab" data-toggle="pill" href="#tabs-satuconnect"
+                                role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">SatuConnect</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="card-body">
@@ -77,6 +81,19 @@
                                 <label>Passkey</label>
                                 <input type="text" name="passkey_fonnte" class="form-control" required
                                     placeholder="Masukkan nomor WA CS" value="{{ $fonnte->token }}">
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-satuconnect" role="tabpanel"
+                            aria-labelledby="tabs-satuconnect">
+                            <div class="form-group">
+                                <label>Userkey</label>
+                                <input type="text" name="userkey_satuconnect" class="form-control"
+                                    placeholder="Masukkan userkey" value="{{ $satuconnect->userkey }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Passkey</label>
+                                <input type="text" name="passkey_satuconnect" class="form-control" required
+                                    placeholder="Masukkan nomor WA CS" value="{{ $satuconnect->token }}">
                             </div>
                         </div>
 

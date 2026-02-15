@@ -14,7 +14,6 @@ use App\Http\Controllers\Admin\QRCodeController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TahunController;
 use App\Http\Controllers\Auth\LoginAdminController;
-use App\Http\Controllers\Auth\AdminOtpController;
 use App\Http\Controllers\Auth\OtpController;
 use App\Http\Controllers\Operasi\DaftarTugasController;
 use App\Http\Controllers\Operasi\DokumenController as OperasiDokumenController;
@@ -68,14 +67,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/', [LoginAdminController::class, 'login'])->name('admin.login.process');
     Route::get('/login', [LoginAdminController::class, 'backToLogin'])->name('admin.login.backToLogin');
 
-    // OTP Admin routes (perlu auth, tapi TIDAK perlu admin.otp)
-    Route::middleware(['auth'])->prefix('otp-admin')->group(function () {
-        Route::get('/', [AdminOtpController::class, 'index'])->name('admin.otp');
-        Route::post('/', [AdminOtpController::class, 'verify'])->name('admin.otp.verify');
-        Route::get('/resend', [AdminOtpController::class, 'resend'])->name('admin.otp.resend');
-    });
-
-    Route::group(['middleware' => ['auth', 'admin.otp']], function () {
+    Route::group(['middleware' => ['auth']], function () {
         Route::prefix('dashboard')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
             Route::get('/getDaurah', [DashboardController::class, 'getDaurah'])->name('admin.dashboard.getDaurah');
@@ -141,6 +133,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/kwitansi/{pembayaran}', [PembayaranController::class, 'kwitansi'])->name('admin.pembayaran.kwitansi');
             Route::post('/registasi', [PembayaranController::class, 'registrasi'])->name('admin.pembayaran.registrasi');
             Route::post('/export', [PembayaranController::class, 'export'])->name('admin.pembayaran.export');
+
         });
 
         Route::prefix('peserta')->middleware('role:admin')->group(function () {
@@ -178,7 +171,7 @@ Route::prefix('admin')->group(function () {
     });
 
     // Profil
-    Route::prefix('profil')->middleware(['auth', 'admin.otp'])->group(function () {
+    Route::prefix('profil')->group(function () {
         Route::get('/', [ProfilController::class, 'index'])->name('admin.profil');
         Route::get('/edit', [ProfilController::class, 'edit'])->name('admin.profil.edit');
         Route::post('/edit', [ProfilController::class, 'editProses'])->name('admin.profil.edit.proses');
@@ -187,7 +180,7 @@ Route::prefix('admin')->group(function () {
     });
 
     // Setting
-    Route::prefix('setting')->middleware(['auth', 'admin.otp', 'role:admin'])->group(function () {
+    Route::prefix('setting')->middleware('role:admin')->group(function () {
         Route::get('/', [SettingController::class, 'index'])->name('admin.setting');
         Route::post('/', [SettingController::class, 'save'])->name('admin.setting.save');
         Route::post('/tes', [SettingController::class, 'tes'])->name('admin.setting.tes');
@@ -196,13 +189,13 @@ Route::prefix('admin')->group(function () {
     });
 
     // QR Code
-    Route::prefix('qr_code')->middleware(['auth', 'admin.otp', 'role:admin'])->group(function () {
+    Route::prefix('qr_code')->middleware('role:admin')->group(function () {
         Route::get('/', [QRCodeController::class, 'index'])->name('admin.qr_code');
         Route::post('/konfirmasi', [QRCodeController::class, 'konfirmasi'])->name('admin.qr_code.konfirmasi');
     });
 
     // Berkas Bukti & Revisi
-    Route::prefix('berkas-bukti-revisi')->middleware(['auth', 'admin.otp', 'role:admin'])->group(function () {
+    Route::prefix('berkas-bukti-revisi')->middleware('role:admin')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\BerkasBuktiRevisiController::class, 'index'])->name('admin.berkas-bukti-revisi');
         Route::get('/data', [\App\Http\Controllers\Admin\BerkasBuktiRevisiController::class, 'data'])->name('admin.berkas-bukti-revisi.data');
         Route::post('/validasi-bukti', [\App\Http\Controllers\Admin\BerkasBuktiRevisiController::class, 'validasiBukti'])->name('admin.berkas-bukti-revisi.validasiBukti');
@@ -210,7 +203,7 @@ Route::prefix('admin')->group(function () {
     });
 
     // Antrian Atribut
-    Route::prefix('antrian_atribut')->middleware(['auth', 'admin.otp', 'role:admin'])->group(function () {
+    Route::prefix('antrian_atribut')->middleware('role:admin')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\AntrianAtributController::class, 'index'])->name('admin.antrian_atribut');
         Route::get('/dataTable', [\App\Http\Controllers\Admin\AntrianAtributController::class, 'dataTable'])->name('admin.antrian_atribut.dataTable');
         Route::get('/autocomplete', [\App\Http\Controllers\Admin\AntrianAtributController::class, 'autocomplete'])->name('admin.antrian_atribut.autocomplete');

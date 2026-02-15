@@ -58,6 +58,7 @@
                                                 <th>Email</th>
                                                 <th>Role</th>
                                                 <th>JK</th>
+                                                <th>HP</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -107,6 +108,11 @@
                                         <i class="fa fa-eye-slash"></i>
                                     </button>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="hp">No. HP</label>
+                                <input type="input" name="hp" class="form-control" id="hp_add"
+                                    placeholder="Masukkan No. HP" value="{{ old('hp') }}">
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -177,6 +183,11 @@
                                 <label for="username">Username</label>
                                 <input type="input" name="username" class="form-control" id="username"
                                     placeholder="Masukkan Username" value="{{ old('username') }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="hp">No. HP</label>
+                                <input type="input" name="hp" class="form-control" id="hp"
+                                    placeholder="Masukkan No. HP" value="{{ old('hp') }}">
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -322,6 +333,7 @@
             var nama = button.data('nama');
             var role_id = button.data('role_id');
             var jenis_kelamin = button.data('jenis_kelamin');
+            var hp = button.data('hp');
 
             var modal = $(this);
             modal.find('#title_edit').text("Edit " + username);
@@ -331,6 +343,7 @@
             modal.find('#email').val(email);
             modal.find('#role_id').val(role_id).change();
             modal.find('#jenis_kelamin').val(jenis_kelamin).change();
+            modal.find('#hp').val(hp);
 
             if (checkCollapse == false) {
                 $('.collapse').collapse('hide');
@@ -472,6 +485,11 @@
                     {
                         data: 'jenis_kelamin',
                         name: 'jenis_kelamin',
+                        className: "align-middle",
+                    },
+                    {
+                        data: 'hp',
+                        name: 'hp',
                         className: "align-middle",
                     },
                     {

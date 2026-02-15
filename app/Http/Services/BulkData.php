@@ -38,5 +38,5 @@ class BulkData
             "nama" => "TIDAK AKTIF"
         ]
     ];
-    public const vendor = ["fonnte", "zenziva"];
+    public const vendor = ["fonnte", "zenziva", "satuconnect"];
 }

@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use App\Models\Peserta;
 use App\Models\Setting;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class Message
 {
@@ -33,7 +34,7 @@ class Message
                 $urlFormulir = route('peserta.formulir.cetak', ['idPeserta' => @$peserta->id, 'noUnik' => @$peserta->user->no_unik]);
             }
 
-            $admin = \Auth::user()->nama;
+            $admin = Auth::user()->nama;
 
             // Send message
             $search = ['{admin}', '{nama}', '{username}', '{password}', '{urlFormulir}', '{tanggal}'];
@@ -60,6 +61,9 @@ class Message
             } elseif ($vendor == 'zenziva') {
                 $param_notif['vendor'] = 'zenziva';
                 $param_notif['type'] = 'notif_wa_zenziva';
+            } elseif ($vendor == 'satuconnect') {
+                $param_notif['vendor'] = 'satuconnect';
+                $param_notif['type'] = 'notif_wa_satuconnect';
             } elseif ($vendor == 'sms') {
                 $param_notif['vendor'] = 'sms';
             }

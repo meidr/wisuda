@@ -82,7 +82,7 @@ class LoginAdminController extends Controller
     {
         return redirect()->route('admin.login');
     }
-    
+
     public function login(Request $request)
     {
         $request->merge(['role_id' => 1]);
@@ -114,5 +114,29 @@ class LoginAdminController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * Override: Setelah login berhasil, cek OTP lalu redirect.
+     */
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        // Cek apakah ada OTP yang sudah diverifikasi dan belum expired
+        $hasVerifiedOtp = \App\Models\Otp::where('user_id', Auth::id())
+            ->whereNotNull('verified_at')
+            ->where('expires_at', '>', now())
+            ->exists();
+
+        if ($hasVerifiedOtp) {
+            session(['otp_admin_verified' => true]);
+            return redirect()->route('admin.dashboard');
+        }
+
+        session(['otp_admin_verified' => false]);
+        return redirect()->route('admin.otp');
     }
 }

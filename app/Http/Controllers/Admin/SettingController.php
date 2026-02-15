@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Helper;
 use App\Http\Services\Message;
-use App\Http\Services\Otp;
 use App\Models\Api;
 use App\Models\Peserta;
 use App\Models\Setting;
 use App\Models\Tahun;
-use File;
-use Helper;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Milon\Barcode\Facades\DNS2DFacade;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
-use Str;
 
 class SettingController extends Controller
 {
@@ -24,16 +23,18 @@ class SettingController extends Controller
         $setting = Setting::get()->pluck('value', 'slug');
         $fonnte = Api::where('type', 'notif_wa_fonnte')->first();
         $zenziva = Api::where('type', 'notif_wa_zenziva')->first();
+        $satuconnect = Api::where('type', 'notif_wa_satuconnect')->first();
 
         $tahun = Tahun::all();
         $tipe = Helper::getEnumValues('peserta', 'tipe');
-        return view('admin.setting.index', compact('setting', 'fonnte', 'zenziva', 'tahun', 'tipe'));
+
+        return view('admin.setting.index', compact('setting', 'fonnte', 'zenziva', 'satuconnect', 'tahun', 'tipe'));
     }
 
     public function save(Request $request)
     {
         try {
-            \DB::beginTransaction();
+            DB::beginTransaction();
             $dataValidated = $request->validate([
                 'otp' => 'nullable',
                 'isi_pesan_wa' => 'nullable',
@@ -63,7 +64,7 @@ class SettingController extends Controller
                 ]);
 
 
-            \DB::commit();
+            DB::commit();
             return [
                 "status" => true,
                 "message" => 200,
@@ -128,9 +129,9 @@ class SettingController extends Controller
                 'tipe' => 'required',
             ]);
 
-            $request->dari = $request->dari - 1;
+            $dari = $request->dari - 1;
 
-            $tanggal = \Carbon::now()->format('d-m-Y H:i:s');
+            $tanggal = Carbon::now()->format('d-m-Y H:i:s');
 
             $lokasiSave = public_path('/img/qr/');
             if (!file_exists($lokasiSave)) {
@@ -144,13 +145,14 @@ class SettingController extends Controller
                     $query->where('users.jenis_kelamin', $request->jenis_kelamin);
                 })
                 ->limit($request->kelipatan)
-                ->offset($request->dari)
+                ->offset($dari)
                 ->select('peserta.*', 'users.jenis_kelamin')
                 ->get();
 
             $generatedFiles = [];
+            $qrPolos = "/img/qr_polos.png";
             foreach ($peserta as $key => $value) {
-                $img = Image::make(asset('/img/qr_polos.png'));
+                $img = Image::make(asset($qrPolos));
                 $img->text($value->nim, 120, 55, function ($font) {
                     $font->file(public_path("/font/FranklinGothic.ttf"));
                     $font->size(12);
